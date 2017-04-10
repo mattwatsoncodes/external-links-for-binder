@@ -4,10 +4,10 @@
  *
  * @since	0.1.0
  *
- * @package mkdo\ground_control
+ * @package mkdo\external_links_for_binder
  */
 
-namespace mkdo\ground_control;
+namespace mkdo\external_links_for_binder;
 
 /**
  * Traits

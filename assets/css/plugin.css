@@ -1,2 +1,72 @@
+@charset "UTF-8";
+/* ==========================================================================
+   PLUGIN SCSS
+   ========================================================================== */
+/**
+ * CSS for the plugin front end.
+ *
+ * This CSS in this plugin has been lovingly buit with the
+ * [Inuit CSS](https://github.com/inuitcss) framework. By
+ * [Harry Roberts](https://csswizardry.com).
+ *
+ * The CSS here should exist here just for reference. We highly recommend that
+ * you delete, this CSS and create your own within your existing theme, and
+ * concatinate it within your existing workflow.
+ */
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Config...............Project-level configuration and feature switches.
+ * Core.................inuitcss’ core and setup settings.
+ * Global...............Project-wide variables and settings.
+ *
+ * TOOLS
+ * Clearfix.............Micro clearfix mixin.
+ * Hidden...............Mixin for hiding elements.
+ *
+ * OBJECTS
+ * Box..................Simple boxing abstraction (Example Entry).
+ *
+ * COMPONENTS
+ * Buttons..............Button component (Example Entry).
+ *
+ * UTILITIES
+ * Clearfix.............Bind our clearfix onto a utility class.
+ * Hide.................Helper classes to hide content
+ */
+/* ==========================================================================
+   #CLEARFIX
+   ========================================================================== */
+/**
+ * Attach our clearfix mixin to a utility class.
+ */
+.u-clearfix:after {
+  content: "" !important;
+  display: block !important;
+  clear: both !important; }
+
+/* ==========================================================================
+   #HIDE
+   ========================================================================== */
+/**
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.u-hidden-visually {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important; }
+
+/**
+ * Hide visually and from screen readers.
+ */
+.u-hidden {
+  display: none !important; }
 
 /*# sourceMappingURL=plugin.css.map */

@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 				// The 'fancy' name for your project
 				// e.g. 'My First Website'.
 				// -------------------------------------
-				fancy_name: 'Ground Control',
+				fancy_name: 'External Links for Binder',
 
 				// -------------------------------------
 				// Documentation path relative to the

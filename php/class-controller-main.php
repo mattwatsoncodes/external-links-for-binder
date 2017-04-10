@@ -4,10 +4,10 @@
  *
  * @since	0.1.0
  *
- * @package mkdo\ground_control
+ * @package mkdo\external_links_for_binder
  */
 
-namespace mkdo\ground_control;
+namespace mkdo\external_links_for_binder;
 
 /**
  * The main loader for this plugin
@@ -24,13 +24,13 @@ class Controller_Main {
 	private $controller_assets;
 
 	/**
-	 * Define the settings page.
+	 * Add additional meta to the binder entry screen.
 	 *
 	 * @var 	object
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $settings;
+	private $meta_binder_add_entry;
 
 	/**
 	 * Notices on the admin screens.
@@ -44,20 +44,19 @@ class Controller_Main {
 	/**
 	 * Constructor.
 	 *
-	 * @param Settings          $settings          Define the settings page.
 	 * @param Controller_Assets $controller_assets Enqueue the public and admin assets.
 	 * @param Notices_Admin     $notices_admin     Notices on the admin screens.
 	 *
 	 * @since 0.1.0
 	 */
 	public function __construct(
-		Settings $settings,
 		Controller_Assets $controller_assets,
+		Meta_Binder_Add_Entry $meta_binder_add_entry,
 		Notices_Admin $notices_admin
 	) {
-		$this->settings           = $settings;
-		$this->controller_assets  = $controller_assets;
-		$this->notices_admin      = $notices_admin;
+		$this->controller_assets     = $controller_assets;
+		$this->meta_binder_add_entry = $meta_binder_add_entry;
+		$this->notices_admin         = $notices_admin;
 	}
 
 	/**
@@ -67,13 +66,13 @@ class Controller_Main {
 	 */
 	public function run() {
 		load_plugin_textdomain(
-			'ground-control',
+			'external_links_for_binder',
 			false,
-			MKDO_GROUND_CONTROL_ROOT . '\languages'
+			MKDO_EXTERNAL_LINKS_FOR_BINDER_ROOT . '\languages'
 		);
 
-		$this->settings->run();
 		$this->controller_assets->run();
+		$this->meta_binder_add_entry->run();
 		$this->notices_admin->run();
 	}
 }

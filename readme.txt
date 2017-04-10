@@ -1,5 +1,5 @@
-=== Ground Control ===
-Contributors: mwtsn, davetgreen, mkdo
+=== External Links for Binder ===
+Contributors: mwtsn, mkdo
 Donate Link:
 Tags:
 Requires at least: 4.7
@@ -8,11 +8,11 @@ Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A brief description of the plugin.
+External documents for the Binder Document Management System (DMS) for WordPress.
 
 == Description ==
 
-A more in depth description of the plugin.
+External documents for the Binder Document Management System (DMS) for WordPress.
 
 The plugin provides the following functionality:
 
@@ -26,7 +26,7 @@ If you are using this plugin in your project [We would love to hear about it](ma
 1. Backup your WordPress install
 2. Upload the plugin folder to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
-4. Configure the plugin via the 'Ground Control' settings page under the WordPress 'Settings' Menu
+4. Configure the plugin via the 'External Links for Binder' settings page under the WordPress 'Settings' Menu
 
 == Screenshots ==
 

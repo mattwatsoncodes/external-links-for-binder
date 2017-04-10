@@ -1,5 +1,5 @@
 {
-	"name": "ground-control",
+	"name": "external_links_for_binder",
 	"version": "0.1.0",
 	"private": "true",
 	"devDependencies": {
