@@ -47,7 +47,7 @@ class Controller_Assets {
 
 		// Check if WordPress is in debug mode, if it is then we do not want to
 		// load the minified assets.
-		if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			$this->debug_mode   = true;
 			$this->asset_suffix = '';
 		}

@@ -89,8 +89,7 @@ class Meta_Binder_Add_Entry {
 								type="radio"
 								id="<?php echo esc_attr( MKDO_EXTERNAL_LINKS_FOR_BINDER_PREFIX );?>_type_<?php echo esc_attr( $key );?>"
 								name="<?php echo esc_attr( MKDO_EXTERNAL_LINKS_FOR_BINDER_PREFIX );?>_type"
-								disabled="disabled"
-								readonly="readonly"
+								value="<?php echo esc_attr( $key );?>"
 							/>
 							<?php
 							echo wp_kses(
@@ -125,7 +124,7 @@ class Meta_Binder_Add_Entry {
 			</p>
 			<div class="meta-box__item meta-box__item--external-document-url">
 				<p>
-					<label for="<?php echo esc_attr( MKDO_EXTERNAL_LINKS_FOR_BINDER_PREFIX );?>_url">
+					<label class="meta-box__label" for="<?php echo esc_attr( MKDO_EXTERNAL_LINKS_FOR_BINDER_PREFIX );?>_url">
 						<?php esc_html_e( 'URL', 'external-links-for-binder' );?>
 					</label>
 					<br/>
@@ -150,8 +149,6 @@ class Meta_Binder_Add_Entry {
 	 */
 	public function mkdo_binder_after_add_entry_save( $post_id ) {
 
-		global $wp_roles, $wpdb;
-
 		// If the binder prefix dosnt exit, bail.
 		if ( ! defined( 'MKDO_BINDER_PREFIX' ) ) {
 			return $post_id;
@@ -171,8 +168,8 @@ class Meta_Binder_Add_Entry {
 			$document    = new \mkdo\binder\Binder_Document();
 			$version     = $binder->get_latest_version_by_post_id( $post_id );
 			$size        = '0KB';
-			$type        = sanitize_text_field( $_POST[ MKDO_EXTERNAL_LINKS_FOR_BINDER_PREFIX . '_size' ] );
-			$url         = esc_url_raw( $_POST[ MKDO_EXTERNAL_LINKS_FOR_BINDER_PREFIX . '_size' ] );
+			$type        = sanitize_text_field( $_POST[ MKDO_EXTERNAL_LINKS_FOR_BINDER_PREFIX . '_type' ] );
+			$url         = esc_url_raw( $_POST[ MKDO_EXTERNAL_LINKS_FOR_BINDER_PREFIX . '_url' ] );
 
 			if ( isset( $_POST[ MKDO_BINDER_PREFIX . '_version' ] ) ) {
 				$version = sanitize_text_field( $_POST[ MKDO_BINDER_PREFIX . '_version' ] );
@@ -191,12 +188,19 @@ class Meta_Binder_Add_Entry {
 			$document->name        = '';
 			$document->description = wp_kses_post( $description );
 			$document->folder      = '';
-			$document->file        = '';
+			$document->file        = esc_url( $url );
 			$document->size        = esc_html( $size );
 			$document->thumb       = '';
 			$document->mime_type   = '';
 
-			$binder->add_entry( $document, $post_id );
+			// Update the type.
+			wp_set_object_terms( $post_id, array( esc_attr( $type ) ), 'binder_type', false );
+
+			// Add the document.
+			\mkdo\binder\Binder::add_entry( $document, $post_id );
+
+			// Stop the item being added again.
+			$_POST[ MKDO_BINDER_PREFIX . '_entry_type' ] = null;
 		}
 	}
 }

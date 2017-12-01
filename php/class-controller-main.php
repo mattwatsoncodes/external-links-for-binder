@@ -66,7 +66,7 @@ class Controller_Main {
 	 */
 	public function run() {
 		load_plugin_textdomain(
-			'external_links_for_binder',
+			'external-links-for-binder',
 			false,
 			MKDO_EXTERNAL_LINKS_FOR_BINDER_ROOT . '\languages'
 		);
